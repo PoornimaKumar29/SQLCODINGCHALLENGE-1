@@ -1,6 +1,7 @@
 --5.Write an SQL query to count the number of applications received for each job listing in the
 --"Jobs" table. Display the job title and the corresponding application count. Ensure that it lists all
---jobs, even if they have no applications.
+--jobs, even if they have no applications
+
 select j.job_title, count(a.Application_Id) from Jobs j
 join applications a on a.job_id=j.job_id
 group by j.job_title
@@ -91,7 +92,8 @@ join Applications app on app.Applicant_Id=a.Applicant_Id
 join jobs j on app.Job_Id=j.Job_Id
 join Companies c on c.Company_Id=j.Company_Id
 
---16. Find companies that have posted jobs with a salary higher than the average salary of all jobs.select c.Company_Id,c.Company_Name ,j.salary from Companies c
+--16. Find companies that have posted jobs with a salary higher than the average salary of all jobs
+select c.Company_Id,c.Company_Name ,j.salary from Companies c
 join jobs j on c.Company_Id=j.Company_Id
 where j.Salary> (select avg(Salary) from jobs)
 
